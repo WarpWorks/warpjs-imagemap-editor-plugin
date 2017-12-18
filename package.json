@@ -1,0 +1,71 @@
+{
+  "name": "@warp-works/warpjs-imagemap-editor-plugin",
+  "version": "1.2.0",
+  "description": "Plugin to easily create imagemap areas Edit",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "grunt && npm -s test",
+    "grunt": "grunt",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarpWorks/warpjs-imagemap-editor-plugin.git"
+  },
+  "keywords": [
+    "warpjs",
+    "plugin",
+    "imagemap",
+    "content"
+  ],
+  "author": {
+    "name": "Hữu Ðà Trần",
+    "email": "huuda.tran@quoininc.com",
+    "url": "https://www.quoininc.com/staff/huu-da-tran/"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/WarpWorks/warpjs-imagemap-editor-plugin/issues"
+  },
+  "homepage": "https://github.com/WarpWorks/warpjs-imagemap-editor-plugin#readme",
+  "devDependencies": {
+    "@quoin/eslint-config-quoin": "0.2.0",
+    "@quoin/node-test-helpers": "0.3.1",
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-0": "6.24.1",
+    "body-parser": "1.18.2",
+    "cookie-parser": "1.4.3",
+    "eslint": "4.13.1",
+    "eslint-plugin-html": "4.0.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-json": "1.2.0",
+    "eslint-plugin-node": "5.2.1",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-standard": "3.0.1",
+    "express": "4.16.2",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "1.1.0",
+    "grunt-contrib-less": "1.4.1",
+    "grunt-eslint": "20.1.0",
+    "grunt-webpack": "3.0.2",
+    "handlebars": "4.0.11",
+    "handlebars-loader": "1.6.0",
+    "load-grunt-config": "0.19.2",
+    "mocha": "4.0.1",
+    "nyc": "11.3.0",
+    "svg.js": "2.6.3",
+    "time-grunt": "1.4.0",
+    "webpack": "2.7.0"
+  },
+  "peerDependencies": {
+    "body-parser": ">=1.17.0",
+    "cookie-parser": ">=1.4.0",
+    "express": ">=4.0.0"
+  },
+  "dependencies": {
+    "@quoin/expressjs-routes-info": "0.2.0",
+    "@warp-works/warpjs-utils": "1.2.8"
+  }
+}
