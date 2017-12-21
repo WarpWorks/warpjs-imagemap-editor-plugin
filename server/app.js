@@ -15,10 +15,10 @@ module.exports = (config, warpCore, baseUrl, staticUrl) => {
 
     app.set('view engine', 'hbs');
     app.set('views', warpjsUtils.getHandlebarsViewsDir());
-    app.set('base-url', baseUrl);
-    app.set('static-url', staticUrl);
-    app.set('plugin-config', config);
-    app.set('warpjs-core', warpCore);
+    app.set(constants.appKeys.baseUrl, baseUrl);
+    app.set(constants.appKeys.staticUrl, staticUrl);
+    app.set(constants.appKeys.pluginConfig, config);
+    app.set(constants.appKeys.warpCore, warpCore);
 
     RoutesInfo.staticPath(constants.routes.assets, app, baseUrl, '/assets', path.join(repoRoot, constants.folders.assets));
 
