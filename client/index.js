@@ -2,6 +2,7 @@ const Promise = require('bluebird');
 const warpjsUtils = require('@warp-works/warpjs-utils');
 
 const constants = require('./../lib/constants');
+const createAreasOnServer = require('./create-areas-on-server');
 const template = require('./template.hbs');
 const updateContent = require('./update-content');
 
@@ -12,7 +13,9 @@ const updateContent = require('./update-content');
         const cache = {
             MODAL_SELECTOR: `[data-warpjs-modal="${constants.modalName}"]`,
             newAreas: [],
-            button: null
+            button: null,
+            docLevel: $(this).data('warpjsDocLevel'),
+            url: $(this).data('warpjsPluginRootUrl')
         };
 
         return Promise.resolve()
@@ -34,11 +37,22 @@ const updateContent = require('./update-content');
                     // If there are new areas and the save button was clicked.
                     if (cache.newAreas.length && button && button.data && (button.data('warpjsAction') === 'save')) {
                         // TODO: Save was clicked. Need to save to server.
-                        warpjsUtils.toast.error(
-                            $,
-                            "Map has been modified, please reload the page.",
-                            "Updated Map"
-                        );
+                        return Promise.resolve()
+                            .then(() => createAreasOnServer($, cache.url, cache.docLevel, cache.newAreas))
+                            .then(() => warpjsUtils.toast.error(
+                                $,
+                                "Map has been modified, please reload the page.",
+                                "Updated Map"
+                            ))
+                            .catch((err) => {
+                                console.log("err=", err);
+                                warpjsUtils.toast.error(
+                                    $,
+                                    "Error while saving new areas.",
+                                    "Error Update Map"
+                                );
+                            })
+                        ;
                     }
                 })
             )

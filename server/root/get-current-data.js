@@ -1,4 +1,4 @@
-const debug = require('debug')('W2:plugin:imagemap-editor:server/root/post');
+// const debug = require('debug')('W2:plugin:imagemap-editor:server/root/get-current-data');
 const Promise = require('bluebird');
 const RoutesInfo = require('@quoin/expressjs-routes-info');
 const warpjsUtils = require('@warp-works/warpjs-utils');
@@ -7,13 +7,12 @@ const constants = require('./../../lib/constants');
 const createImageResource = require('./create-image-resource');
 
 module.exports = (req, res) => {
-    debug("req.body=", req.body);
     const {domain, type, id} = req.params;
 
     const warpCore = req.app.get(constants.appKeys.warpCore);
     const entity = warpCore.getDomainByName(domain).getEntityByName(type);
-    const pluginConfig = req.app.get(constants.appKeys.pluginConfig);
 
+    const pluginConfig = req.app.get(constants.appKeys.pluginConfig);
     const Persistence = require(pluginConfig.persistence.module);
     const persistence = new Persistence(pluginConfig.persistence.host, domain);
 
@@ -31,7 +30,6 @@ module.exports = (req, res) => {
 
             .then(() => entity.getInstance(persistence, id))
             .then((instance) => Promise.resolve()
-                .then(() => debug("instance=", instance))
                 .then(() => warpjsUtils.docLevel.getData(persistence, entity, instance, req.body.warpjsDocLevel))
                 .then((docLevelData) => createImageResource(persistence, docLevelData.model, docLevelData.instance, req.body.warpjsDocLevel))
                 .then((imageResource) => resource.embed('images', imageResource))
@@ -39,7 +37,7 @@ module.exports = (req, res) => {
             .then(() => warpjsUtils.sendHal(req, res, resource, RoutesInfo))
         )
         .catch((err) => {
-            console.error("server/root/post: err:", err);
+            console.error("server/root/get-current-data: err:", err);
             throw err;
         })
         .finally(() => persistence.close())

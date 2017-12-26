@@ -1,7 +1,7 @@
-const get = require('./get');
-const post = require('./post');
+const createNewAreas = require('./create-new-areas');
+const getCurrentData = require('./get-current-data');
 
 module.exports = {
-    get: (req, res) => get(req, res),
-    post: (req, res) => post(req, res)
+    patch: (req, res) => createNewAreas(req, res),
+    post: (req, res) => getCurrentData(req, res)
 };
