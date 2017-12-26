@@ -1,56 +1,52 @@
 const Promise = require('bluebird');
 const warpjsUtils = require('@warp-works/warpjs-utils');
 
-const bodyTemplate = require('./modal-body.hbs');
 const constants = require('./../lib/constants');
-const errorTemplate = require('./error.hbs');
 const template = require('./template.hbs');
-
-const MODAL_SELECTOR = `[data-warpjs-modal="${constants.modalName}"]`;
+const updateContent = require('./update-content');
 
 (($) => $(document).ready(() => {
     $(document).on('click', `[data-warpjs-plugin-identifier="${constants.basename}"]`, function(e) {
         const url = $(this).data('warpjsPluginRootUrl');
 
+        const cache = {
+            MODAL_SELECTOR: `[data-warpjs-modal="${constants.modalName}"]`,
+            newAreas: [],
+            button: null
+        };
+
         return Promise.resolve()
-            .then(() => $(MODAL_SELECTOR))
+            .then(() => $(cache.MODAL_SELECTOR))
             .then((modal) => {
                 if (!modal.length) {
                     $(document.body).append($(template({ modalName: constants.modalName })));
                 }
             })
-            .then(() => $(MODAL_SELECTOR).modal('show'))
-            .then(() => warpjsUtils.proxy.post($, url, $(this).data()))
-            .then((result) => Promise.resolve()
-                .then(() => console.log("result=", result))
 
-                // Add the CSS if not already loaded.
-                .then(() => {
-                    if (!$(`link[href="${result._links.css.href}"]`).length) {
-                        const link = document.createElement('link');
-                        link.rel = 'stylesheet';
-                        link.href = result._links.css.href;
-                        document.head.appendChild(link);
+            // Add modal event
+            .then(() => $(`[data-warpjs-modal="${constants.modalName}"]`)
+                .one('hide.bs.modal', function(e) {
+                    cache.button = $(document.activeElement);
+                })
+                .one('hidden.bs.modal', function(e) {
+                    const button = cache.button;
+
+                    // If there are new areas and the save button was clicked.
+                    if (cache.newAreas.length && button && button.data && (button.data('warpjsAction') === 'save')) {
+                        // TODO: Save was clicked. Need to save to server.
+                        warpjsUtils.toast.error(
+                            $,
+                            "Map has been modified, please reload the page.",
+                            "Updated Map"
+                        );
                     }
                 })
-
-                // Check if SVG is supported
-                .then(() => {
-                    if (!(window && window.SVG && window.SVG.supported)) {
-                        throw new Error("Cannot open ImageEditor: This browser does not support SVG!");
-                    }
-                })
-
-                // Update modal-body
-                .then(() => bodyTemplate({images: result._embedded.images}))
-                .then((content) => $('.modal-body', MODAL_SELECTOR).html(content))
-
-                .catch((err) => $('.modal-body', MODAL_SELECTOR).html(errorTemplate(err)))
             )
+
+            .then(() => $(cache.MODAL_SELECTOR).modal('show'))
+            .then(() => warpjsUtils.proxy.post($, url, $(this).data()))
+            .then((result) => updateContent($, cache, result))
             .catch((err) => console.error("error=", err))
-            .then(() => $(MODAL_SELECTOR))
-            .then((modal) => {
-            })
         ;
     });
 }))(jQuery);
