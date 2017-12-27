@@ -2,7 +2,6 @@ const errorTemplate = require('./error.hbs');
 const imageOnload = require('./image-onload');
 
 module.exports = ($, cache, image) => {
-    console.log("image=", image);
     if (image && image._links && image._links.image) {
         const img = new Image();
         img.onload = function(e) {

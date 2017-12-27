@@ -60,7 +60,14 @@ const updateContent = require('./update-content');
             .then(() => $(cache.MODAL_SELECTOR).modal('show'))
             .then(() => warpjsUtils.proxy.post($, url, $(this).data()))
             .then((result) => updateContent($, cache, result))
-            .catch((err) => console.error("error=", err))
+            .catch((err) => {
+                console.error("error=", err);
+                warpjsUtils.toast.error(
+                    $,
+                    "Error getting initial Map data.",
+                    "Map data"
+                );
+            })
         ;
     });
 }))(jQuery);

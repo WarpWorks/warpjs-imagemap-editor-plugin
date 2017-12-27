@@ -7,8 +7,6 @@ module.exports = ($, cache, draw, size, areas) => {
 
     if (areas) {
         areas.forEach((area) => {
-            console.log("each area=", area);
-
             const areaError = {
                 coords: area.coords,
                 shape: area.shape,

@@ -5,8 +5,6 @@ const bodyTemplate = require('./modal-body.hbs');
 const errorTemplate = require('./error.hbs');
 
 module.exports = ($, cache, result) => Promise.resolve()
-    .then(() => console.log("result=", result))
-
     // Add the CSS if not already loaded.
     .then(() => {
         if (!$(`link[href="${result._links.css.href}"]`).length) {

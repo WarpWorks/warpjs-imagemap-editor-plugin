@@ -3,8 +3,6 @@ const drawMap = require('./draw-map');
 const drawNewAreas = require('./draw-new-areas');
 
 module.exports = ($, cache, image, element, e) => {
-    console.log("image done loading...");
-
     $(`${cache.MODAL_SELECTOR} [data-warpjs-placeholder="image"]`).empty();
     const draw = window.SVG('warpjs-imagemap-editor-placeholder');
 
