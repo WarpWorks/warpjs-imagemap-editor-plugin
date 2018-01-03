@@ -1,5 +1,9 @@
 # Warpjs ImageMap Editor Plugin releases
 
+## 1.2.2 - 2018-01-03
+
+- Updated peerDependencies.
+
 ## 1.2.1 - 2018-01-03
 
 - Updated to async code from warpCore.
