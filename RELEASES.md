@@ -1,5 +1,10 @@
 # Warpjs ImageMap Editor Plugin releases
 
+## 1.2.3 - 2018-01-09
+
+- Versioned asset names.
+- Tree shaking bundle.
+
 ## 1.2.2 - 2018-01-03
 
 - Updated peerDependencies.

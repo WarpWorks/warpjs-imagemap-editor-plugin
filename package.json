@@ -1,6 +1,6 @@
 {
   "name": "@warp-works/warpjs-imagemap-editor-plugin",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Plugin to easily create imagemap areas Edit",
   "main": "index.js",
   "scripts": {

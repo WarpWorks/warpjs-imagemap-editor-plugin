@@ -10,7 +10,7 @@ module.exports = {
         target: 'web',
         devtool: 'source-map',
         entry: {
-            [constants.basename]: './client/index.js'
+            [constants.versionedName]: './client/index.js'
         },
         externals: {
             jquery: true
@@ -24,10 +24,7 @@ module.exports = {
         },
         plugins: [
             new webpack.optimize.UglifyJsPlugin({
-                compress: false,
-                output: {
-                    ascii_only: true
-                }
+                compress: true
             })
         ],
         module: {
