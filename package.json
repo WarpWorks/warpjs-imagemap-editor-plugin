@@ -1,16 +1,20 @@
 {
   "name": "@warp-works/warpjs-imagemap-editor-plugin",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Plugin to easily create imagemap areas Edit",
   "main": "index.js",
   "scripts": {
-    "prepublish": "grunt && npm -s test",
+    "prepare": "grunt",
+    "prepack": "npm run -s test",
     "grunt": "grunt",
     "test": ""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WarpWorks/warpjs-imagemap-editor-plugin.git"
+  },
+  "engines": {
+    "node": ">=8.12.0"
   },
   "keywords": [
     "warpjs",
@@ -29,38 +33,38 @@
   },
   "homepage": "https://github.com/WarpWorks/warpjs-imagemap-editor-plugin#readme",
   "devDependencies": {
-    "@quoin/eslint-config-quoin": "latest",
-    "@quoin/expressjs-routes-info": "0.2.0",
-    "@quoin/node-test-helpers": "latest",
+    "@quoin/eslint-config-quoin": "~0.3.0",
+    "@quoin/expressjs-routes-info": "~0.2.1",
+    "@quoin/node-test-helpers": "~1.0.2",
     "@warp-works/warpjs-plugins": "1.2.x",
-    "@warp-works/warpjs-utils": "release-1.2",
+    "@warp-works/warpjs-utils": "~1.2.73",
     "babel-core": "6.26.x",
     "babel-loader": "7.1.x",
     "babel-preset-env": "1.7.x",
     "babel-preset-stage-0": "6.24.1",
     "body-parser": "1.18.x",
     "cookie-parser": "1.4.3",
-    "eslint": "5.0.x",
-    "eslint-config-standard": "11.0.x",
-    "eslint-plugin-html": "4.0.x",
-    "eslint-plugin-import": "2.13.x",
-    "eslint-plugin-json": "1.2.x",
-    "eslint-plugin-node": "6.0.x",
-    "eslint-plugin-promise": "3.8.x",
-    "eslint-plugin-standard": "3.1.x",
+    "eslint": "~5.10.0",
+    "eslint-config-standard": "~12.0.0",
+    "eslint-plugin-html": "~5.0.0",
+    "eslint-plugin-import": "~2.14.0",
+    "eslint-plugin-json": "~1.3.2",
+    "eslint-plugin-node": "~8.0.0",
+    "eslint-plugin-promise": "~4.0.1",
+    "eslint-plugin-standard": "~4.0.0",
     "express": "4.16.x",
     "grunt": "1.0.x",
-    "grunt-contrib-clean": "1.1.0",
+    "grunt-contrib-clean": "~2.0.0",
     "grunt-contrib-less": "2.0.x",
     "grunt-eslint": "21.0.x",
     "grunt-webpack": "3.1.x",
-    "handlebars": "4.0.11",
+    "handlebars": "~4.0.12",
     "handlebars-loader": "1.7.x",
-    "load-grunt-config": "0.19.2",
+    "load-grunt-config": "~1.0.1",
     "mocha": "5.2.x",
-    "nyc": "12.0.x",
+    "nyc": "~13.1.0",
     "svg.js": "2.6.x",
-    "time-grunt": "1.4.0",
+    "time-grunt": "~2.0.0",
     "webpack": "2.7.0"
   },
   "peerDependencies": {
@@ -71,8 +75,8 @@
     "express": ">=4.0.0"
   },
   "dependencies": {
-    "bluebird": "3.5.1",
-    "debug": "3.1.0",
-    "lodash": "4.17.x"
+    "bluebird": "~3.5.3",
+    "debug": "~4.1.0",
+    "lodash": "~4.17.11"
   }
 }
