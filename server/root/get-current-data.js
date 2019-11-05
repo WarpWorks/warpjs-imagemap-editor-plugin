@@ -7,7 +7,7 @@ const constants = require('./../../lib/constants');
 const createImageResource = require('./create-image-resource');
 
 module.exports = (req, res) => {
-    const {domain, type, id} = req.params;
+    const { domain, type, id } = req.params;
 
     const warpCore = req.app.get(constants.appKeys.warpCore);
 
@@ -40,6 +40,7 @@ module.exports = (req, res) => {
             )
         )
         .catch((err) => {
+            // eslint-disable-next-line no-console
             console.error("server/root/get-current-data: err:", err);
             throw err;
         })

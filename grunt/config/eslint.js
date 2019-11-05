@@ -15,6 +15,7 @@ module.exports = {
         },
         src: [
             '*.js',
+            '!*.test.js',
             'grunt/**/*.js',
             'lib/**/*.js',
             '!lib/**/*.test.js',
@@ -42,18 +43,19 @@ module.exports = {
             'client/**/*.js',
             '!client/**/*.test.js'
         ]
+    },
+    test: {
+        options: {
+            baseConfig: {
+                root: true,
+                extends: '@quoin/eslint-config-quoin/node-test'
+            }
+        },
+        src: [
+            '*.test.js',
+            'client/**/*.test.js',
+            'lib/**/*.test.js',
+            'server/**/*.test.js'
+        ]
     }
-    // test: {
-    //     options: {
-    //         baseConfig: {
-    //             root: true,
-    //             extends: '@quoin/eslint-config-quoin/node-test'
-    //         }
-    //     },
-    //     src: [
-    //         'client/**/*.test.js',
-    //         'lib/**/*.test.js',
-    //         'server/**/*.test.js'
-    //     ]
-    // }
 };

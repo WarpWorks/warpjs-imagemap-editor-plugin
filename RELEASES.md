@@ -1,5 +1,9 @@
 # Warpjs ImageMap Editor Plugin releases
 
+## 1.2.6 - 2019-11-05
+
+- fixing lodash version. npm outdated packages.
+
 ## 1.2.5 - 2018-12-13
 
 - npm outdated.

@@ -23,7 +23,7 @@ module.exports = ($, cache, result) => Promise.resolve()
     })
 
     // Update modal-body
-    .then(() => bodyTemplate({images: result._embedded.images}))
+    .then(() => bodyTemplate({ images: result._embedded.images }))
     .then((content) => $('.modal-body', cache.MODAL_SELECTOR).html(content))
 
     // Add image

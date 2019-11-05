@@ -8,7 +8,7 @@ module.exports = ($, cache, image) => {
             imageOnload($, cache, image, this, e);
         };
         img.onerror = function(e) {
-            const content = errorTemplate({message: `Could not load image: ${image._links.image.href}`});
+            const content = errorTemplate({ message: `Could not load image: ${image._links.image.href}` });
             $('[data-warpjs-placeholder="image"]', cache.MODAL_SELECTOR).html(content);
         };
         img.src = image._links.image.href;

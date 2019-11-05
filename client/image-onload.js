@@ -35,7 +35,7 @@ module.exports = ($, cache, image, element, e) => {
     } else {
         canvasWidth = naturalWidth;
         canvasHeight = naturalHeight;
-        const content = defaultDimensionWarning({naturalWidth, naturalHeight});
+        const content = defaultDimensionWarning({ naturalWidth, naturalHeight });
         $('[data-warpjs-placeholder="image"]', cache.MODAL_SELECTOR).append($(content));
     }
 
@@ -49,6 +49,6 @@ module.exports = ($, cache, image, element, e) => {
         style: 'fill:none;stroke-width:1;stroke:gray'
     });
 
-    drawMap($, cache, draw, {w: canvasWidth, h: canvasHeight}, image && image._embedded && image._embedded.areas);
+    drawMap($, cache, draw, { w: canvasWidth, h: canvasHeight }, image && image._embedded && image._embedded.areas);
     drawNewAreas($, cache, draw);
 };

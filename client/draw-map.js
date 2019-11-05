@@ -51,7 +51,7 @@ module.exports = ($, cache, draw, size, areas) => {
     }
 
     if (errors.length) {
-        const content = areasErrorsTemplate({errors});
+        const content = areasErrorsTemplate({ errors });
         $('[data-warpjs-placeholder="image"]', cache.MODAL_SELECTOR).append($(content));
     }
 };

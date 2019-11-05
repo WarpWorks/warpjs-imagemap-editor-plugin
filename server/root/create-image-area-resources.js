@@ -14,6 +14,6 @@ module.exports = (persistence, entity, instance, docLevel) => Promise.resolve()
         href: imageArea.HRef,
         shape: imageArea.Shape,
         title: imageArea.Title,
-        docLevel: [docLevel, `Relationship:${constants.schema.relationship.for.imagearea}`, `Entity:${imageArea._id}`].join('.')
+        docLevel: [ docLevel, `Relationship:${constants.schema.relationship.for.imagearea}`, `Entity:${imageArea._id}` ].join('.')
     })))
 ;

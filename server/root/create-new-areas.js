@@ -5,7 +5,7 @@ const warpjsUtils = require('@warp-works/warpjs-utils');
 const constants = require('./../../lib/constants');
 
 module.exports = (req, res) => {
-    const {domain, type, id} = req.params;
+    const { domain, type, id } = req.params;
 
     const warpCore = req.app.get(constants.appKeys.warpCore);
 
@@ -45,6 +45,7 @@ module.exports = (req, res) => {
             )
         )
         .catch((err) => {
+            // eslint-disable-next-line no-console
             console.log("server/root/create-new-areas: err:", err);
             throw err;
         })
