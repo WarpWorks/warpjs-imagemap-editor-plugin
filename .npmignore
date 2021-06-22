@@ -1,6 +1,9 @@
 /.babelrc
+/.github
+/.jscpd.json
 /.npmignore
 /.nycrc
+/*.test.js
 /client
 /Gruntfile.js
 /grunt
